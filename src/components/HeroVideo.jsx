@@ -1,52 +1,67 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const SLIDES = [
-  { src: "/hero/cong-trinh-01.jpg", alt: "Công trình nhà phố đang thi công của Xây Dựng Trung Nguyễn" },
-  { src: "/villas/villa-cong-lon.jpg", alt: "Biệt thự mặt tiền rộng" },
-  { src: "/villas/neo-02.jpg", alt: "Nhà phố sau hoàn thiện" },
-];
+const UNLOCK_EVENTS = ["pointerdown", "keydown", "touchstart", "scroll", "wheel"];
 
 export default function HeroVideo() {
-  const [index, setIndex] = useState(0);
+  const videoRef = useRef(null);
+  const [muted, setMuted] = useState(false);
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setIndex((current) => (current + 1) % SLIDES.length);
-    }, 6500);
-    return () => window.clearInterval(timer);
+    const video = videoRef.current;
+    if (!video) return undefined;
+
+    const unlock = () => {
+      video.muted = false;
+      setMuted(false);
+      video.play().catch(() => {});
+      UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
+    };
+
+    video.muted = false;
+    video.play().catch(() => {
+      // Browsers block autoplay with sound until the visitor interacts with the page.
+      video.muted = true;
+      setMuted(true);
+      video.play().catch(() => {});
+      UNLOCK_EVENTS.forEach((evt) => window.addEventListener(evt, unlock, { passive: true }));
+    });
+
+    return () => UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
   }, []);
 
-  const go = (step) => setIndex((current) => (current + step + SLIDES.length) % SLIDES.length);
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setMuted(video.muted);
+    if (video.paused) video.play().catch(() => {});
+  };
 
   return (
-    <section className="hero" aria-roledescription="carousel" aria-label="Công trình Xây Dựng Trung Nguyễn">
+    <section className="hero hero--video" aria-label="Video giới thiệu Xây Dựng Trung Nguyễn">
       <h1 className="sr-only">Xây nhà trọn gói, sửa chữa và cải tạo</h1>
-      {SLIDES.map((slide, i) => (
-        <img
-          key={slide.src}
-          className={`hero-slide${i === index ? " is-on" : ""}`}
-          src={slide.src}
-          alt={i === index ? slide.alt : ""}
-          aria-hidden={i === index ? undefined : true}
-        />
-      ))}
-      <button className="hero-arrow prev" type="button" aria-label="Ảnh trước" onClick={() => go(-1)}>
-        ‹
+      <video
+        ref={videoRef}
+        className="hero-video"
+        src="/hero/gioi-thieu.mp4"
+        poster="/hero/cong-trinh-01.jpg"
+        autoPlay
+        loop
+        playsInline
+        preload="auto"
+      />
+      <button
+        className="hero-sound"
+        type="button"
+        aria-label={muted ? "Bật tiếng" : "Tắt tiếng"}
+        onClick={toggleSound}
+      >
+        {muted ? (
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" /><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+        ) : (
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" /><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" /></svg>
+        )}
       </button>
-      <button className="hero-arrow next" type="button" aria-label="Ảnh sau" onClick={() => go(1)}>
-        ›
-      </button>
-      <div className="hero-dots">
-        {SLIDES.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            className={i === index ? "is-on" : ""}
-            aria-label={`Ảnh ${i + 1}`}
-            onClick={() => setIndex(i)}
-          />
-        ))}
-      </div>
     </section>
   );
 }

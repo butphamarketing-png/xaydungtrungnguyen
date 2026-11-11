@@ -254,6 +254,39 @@ h1, h2, h3, blockquote {
   transition: opacity 0.45s ease;
 }
 .hero-slide.is-on { opacity: 1; }
+.hero.hero--video {
+  height: auto;
+  min-height: 0;
+  max-height: calc(100vh - 40px);
+  aspect-ratio: 16 / 9;
+  background: #0c2348;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0c2348;
+}
+.hero-sound {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(12, 35, 72, 0.7);
+  color: #fff;
+  cursor: pointer;
+}
+.hero-sound svg { width: 22px; height: 22px; }
+.hero-sound:hover { background: var(--cta); }
 .hero-arrow {
   position: absolute;
   top: 50%;
