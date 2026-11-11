@@ -316,6 +316,19 @@ h1, h2, h3, blockquote {
   cursor: pointer;
 }
 .hero-sound svg { width: 22px; height: 22px; }
+.hero-sound.is-muted {
+  display: inline-flex;
+  gap: 0.45rem;
+  width: auto;
+  padding: 0 1rem 0 0.8rem;
+  border-radius: 999px;
+  align-items: center;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  animation: hero-sound-pulse 1.6s ease-in-out infinite;
+}
+@keyframes hero-sound-pulse { 50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.18); } }
 .hero-sound:hover { background: var(--cta); }
 .hero-arrow {
   position: absolute;

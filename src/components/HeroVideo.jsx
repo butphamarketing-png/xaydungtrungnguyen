@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const UNLOCK_EVENTS = ["pointerdown", "keydown", "touchstart", "scroll", "wheel"];
+const UNLOCK_EVENTS = ["pointerdown", "pointerup", "touchend", "click", "keydown"];
 
 export default function HeroVideo() {
   const videoRef = useRef(null);
@@ -13,9 +13,16 @@ export default function HeroVideo() {
 
     const unlock = () => {
       video.muted = false;
-      setMuted(false);
-      video.play().catch(() => {});
-      UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
+      video
+        .play()
+        .then(() => {
+          setMuted(false);
+          UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
+        })
+        .catch(() => {
+          video.muted = true;
+          video.play().catch(() => {});
+        });
     };
 
     const start = () => {
@@ -81,19 +88,27 @@ export default function HeroVideo() {
         ref={videoRef}
         className="hero-video"
         src="/hero/gioi-thieu.mp4"
-        poster="/cong-trinh/tn-10.jpg"
         loop
         playsInline
         preload="auto"
       />
       <button
-        className="hero-sound"
+        className={`hero-sound${muted ? " is-muted" : ""}`}
         type="button"
         aria-label={muted ? "Bật tiếng" : "Tắt tiếng"}
-        onClick={toggleSound}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleSound();
+        }}
+        onPointerDown={(e) => e.stopPropagation()}
+        onPointerUp={(e) => e.stopPropagation()}
+        onTouchEnd={(e) => e.stopPropagation()}
       >
         {muted ? (
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" /><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+          <>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" /><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+            <span>Chạm để bật tiếng</span>
+          </>
         ) : (
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" /><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" /></svg>
         )}
