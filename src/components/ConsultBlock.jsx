@@ -20,7 +20,7 @@ export default function ConsultBlock() {
   return (
     <section className="pad consult-block" id="tu-van">
       <div className="consult-visual">
-        <img src="/cong-trinh/tn-05.jpg" alt="Đội thi công Xây Dựng Trung Nguyễn tại công trình" loading="lazy" />
+        <img src="/home/y-tuong-hoan-thien.jpg" alt="Nhà phố từ bản vẽ đến công trình hoàn thiện" loading="lazy" />
       </div>
       <div className="consult-main">
         <div className="consult-head">

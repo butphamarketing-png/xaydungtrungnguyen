@@ -278,7 +278,7 @@ h1, h2, h3, blockquote {
 }
 .hero-slide.is-on { opacity: 1; }
 .hero.hero--video {
-  height: min(56.25vw, calc(100vh - 34px), 720px);
+  height: min(56.25vw, calc(100vh - 34px), 1080px);
   min-height: 0;
   max-height: none;
   background: #0c2348;
@@ -316,19 +316,6 @@ h1, h2, h3, blockquote {
   cursor: pointer;
 }
 .hero-sound svg { width: 22px; height: 22px; }
-.hero-sound.is-muted {
-  display: inline-flex;
-  gap: 0.45rem;
-  width: auto;
-  padding: 0 1rem 0 0.8rem;
-  border-radius: 999px;
-  align-items: center;
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  animation: hero-sound-pulse 1.6s ease-in-out infinite;
-}
-@keyframes hero-sound-pulse { 50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.18); } }
 .hero-sound:hover { background: var(--cta); }
 .hero-arrow {
   position: absolute;
@@ -1600,19 +1587,13 @@ body.is-popup-open .float-consult {
   pointer-events: none;
 }
 .alo-circle {
-  width: 64px;
-  height: 64px;
-  top: -7px;
-  left: -7px;
+  inset: -14%;
   border: 2px solid currentColor;
   opacity: 0.55;
   animation: alo-zoom 1.15s ease-out infinite;
 }
 .alo-fill {
-  width: 72px;
-  height: 72px;
-  top: -11px;
-  left: -11px;
+  inset: -22%;
   background: currentColor;
   opacity: 0.35;
   animation: alo-pulse 1.15s ease-out infinite;
@@ -2732,10 +2713,10 @@ body.is-popup-open .float-consult {
 
   .btn, .btn.pill { font-size: 0.9rem; padding: 0.7rem 1.2rem; }
 
-  .float-dock { right: 8px; bottom: 64px; gap: 14px; }
+  .float-dock { right: 14px; bottom: 66px; gap: 18px; }
   .dock-btn, .dock-btn i { width: 40px; height: 40px; }
   .dock-btn svg { width: 19px; height: 19px; }
-  .float-consult { right: 8px; bottom: 10px; font-size: 0.82rem; padding: 0.55rem 0.8rem; }
+  .float-consult { right: 10px; bottom: 10px; font-size: 0.82rem; padding: 0.55rem 0.8rem; }
 
   .footer-grid { padding: 2rem 16px 1.6rem; row-gap: 1.6rem; }
   .footer-logo { font-size: 1.1rem; }

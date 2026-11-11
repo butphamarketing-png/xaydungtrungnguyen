@@ -1,6 +1,6 @@
 export const REAL_PHOTOS = Array.from({ length: 10 }, (_, i) => `/cong-trinh/tn-${String(i + 1).padStart(2, "0")}.jpg`);
 
-const KEEP = /^\/(cong-trinh\/tn-|logo|zalo|loader-|favicon|icon)|^\/[^?]*\.svg(\?|$)|^data:|^blob:/i;
+const KEEP = /^\/(cong-trinh\/tn-|home\/y-tuong-hoan-thien|logo|zalo|loader-|favicon|icon)|^\/[^?]*\.svg(\?|$)|^data:|^blob:/i;
 
 const assigned = new Map();
 
