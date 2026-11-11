@@ -25,6 +25,10 @@ export default function HeroVideo() {
         });
     };
 
+    video.muted = true;
+    video.setAttribute("muted", "");
+    video.play().catch(() => {});
+
     const start = () => {
       video.currentTime = 0;
       video.muted = false;
@@ -88,6 +92,8 @@ export default function HeroVideo() {
         ref={videoRef}
         className="hero-video"
         src="/hero/gioi-thieu.mp4"
+        autoPlay
+        muted
         loop
         playsInline
         preload="auto"
