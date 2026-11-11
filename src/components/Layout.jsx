@@ -23,6 +23,7 @@ export default function Layout() {
   const tel = String(site.phone || "").replace(/\D/g, "");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navVisible, setNavVisible] = useState(false);
   const location = useLocation();
   const home = location.pathname === "/";
   useScrollReveal(location.pathname);
@@ -41,7 +42,10 @@ export default function Layout() {
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setNavVisible(window.scrollY > 120);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -71,7 +75,7 @@ export default function Layout() {
       <a className="skip-link" href="#noi-dung">
         Bỏ qua điều hướng
       </a>
-      <div className={`site-head${scrolled ? " is-scrolled" : ""}${home ? " on-home" : ""}${home && !scrolled ? " on-hero" : ""}`}>
+      <div className={`site-head${scrolled ? " is-scrolled" : ""}${navVisible || open ? " nav-visible" : ""}${home ? " on-home" : ""}${home && !scrolled ? " on-hero" : ""}`}>
         <div className="topbar">
           <div className="topbar-track" aria-label={`${site.name} – ${site.address}`}>
             {[0, 1, 2, 3].map((i) => (
