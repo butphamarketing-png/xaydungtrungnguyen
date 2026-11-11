@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/tu-khoa/thiet-ke-kien-truc-ho-chi-minh",
+      "destination": "/tin-thiet-ke-kien-truc-ho-chi-minh",
+      "permanent": true
+    },
+    {
+      "source": "/tu-khoa/:slug",
+      "destination": "/:slug",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/adminbp", "destination": "/index.html" },
+    { "source": "/adminbp/:path*", "destination": "/index.html" },
+    { "source": "/((?!api/|assets/|files/|studio/)(?!.*\\.).*)", "destination": "/index.html" }
+  ]
+}
