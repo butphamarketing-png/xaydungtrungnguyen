@@ -46,10 +46,10 @@ export default function Home() {
           </Link>
         </div>
         <div className="about-photos">
-          <SmartImg className="wide" src="/villas/neo-02.jpg" alt="Nhà phố hoàn thiện" />
+          <SmartImg className="wide" src="/cong-trinh/tn-07.jpg" alt="Đội thi công Trung Nguyễn xây tường tại công trình" />
           <div className="pair">
-            <SmartImg src="/hero/cong-trinh-01.jpg" alt="Công trình đang thi công" />
-            <SmartImg src="/cai-tao.jpg" alt="Đội ngũ khảo sát công trình" />
+            <SmartImg src="/cong-trinh/tn-10.jpg" alt="Đội ngũ Xây Dựng Trung Nguyễn tại công trình" />
+            <SmartImg src="/cong-trinh/tn-02.jpg" alt="Thợ Trung Nguyễn tô trát tường" />
           </div>
         </div>
       </section>
@@ -73,13 +73,13 @@ export default function Home() {
             {
               title: "Thi công xây dựng",
               desc: "Thi công xây nhà phần thô, hoàn thiện và trọn gói, đảm bảo chất lượng và tiến độ.",
-              image: "/hero/cong-trinh-01.jpg",
+              image: "/cong-trinh/tn-09.jpg",
               href: "/xay-dung-nha-tron-goi-tai-ho-chi-minh",
             },
             {
               title: "Sửa chữa – Cải tạo nhà",
               desc: "Nâng cấp, sửa chữa và cải tạo không gian sống tiện nghi, thẩm mỹ và bền vững.",
-              image: "/cai-tao.jpg",
+              image: "/cong-trinh/tn-01.jpg",
               href: "/bao-gia-sua-chu-nha-tron-goi-2025",
             },
           ].map((s) => (

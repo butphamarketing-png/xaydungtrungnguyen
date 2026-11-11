@@ -2578,6 +2578,98 @@ body.is-popup-open .float-consult {
   .footer-bottom p + p { padding-left: 0; border-left: 0; }
 }
 
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .pad { padding: 2.4rem 16px; }
+
+  .header { min-height: 60px; margin: 8px 10px 0; padding: 0 8px 0 10px; }
+  .site-head.on-home .header { margin-bottom: -68px; }
+  .brand img { width: 40px; height: 40px; }
+  .brand-name small { font-size: 0.62rem; }
+  .brand-name strong { font-size: 0.82rem; white-space: nowrap; }
+  .header-cta {
+    width: 40px;
+    height: 40px;
+    min-height: 0;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0;
+    gap: 0;
+  }
+  .header-cta svg { width: 18px; height: 18px; margin: 0; }
+
+  .about-copy h2,
+  .services-head h2,
+  .price-head h2,
+  .calc-head h2,
+  .works-head h2,
+  .consult-head h2,
+  .journal-head h2 { font-size: 1.4rem; line-height: 1.3; }
+  .about-kicker,
+  .services-kicker,
+  .price-kicker,
+  .calc-kicker,
+  .works-kicker,
+  .consult-kicker,
+  .journal-kicker { font-size: 0.85rem; gap: 0.5rem; }
+  .services-kicker::before, .services-kicker::after,
+  .price-kicker::before, .price-kicker::after,
+  .calc-kicker::before, .calc-kicker::after,
+  .works-kicker::before, .works-kicker::after,
+  .consult-kicker::before, .consult-kicker::after,
+  .journal-kicker::before, .journal-kicker::after { width: 24px; }
+  .about-copy p,
+  .services-lead,
+  .consult-head p,
+  .journal-head p:last-child,
+  .calc-note { font-size: 0.88rem; line-height: 1.6; }
+  .services-head, .journal-head { margin-bottom: 1.2rem; }
+
+  .stats div { padding: 0.75rem 0.5rem; gap: 0.5rem; }
+  .trust-ico { width: 28px; height: 28px; }
+  .stats strong { font-size: 0.88rem; }
+  .stats span { font-size: 0.74rem; }
+
+  .about-block { gap: 1.4rem; }
+  .about-points { margin: 0.9rem 0 1rem; }
+  .about-points li { font-size: 0.88rem; }
+  .about-photos .wide { height: 170px; }
+  .about-photos .pair { grid-template-columns: 1fr 1fr; }
+  .about-photos .pair img { height: 110px; }
+
+  .services-block .service-cards { gap: 0.9rem; }
+  .services-block .home-service img { height: 160px; min-height: 160px; }
+  .services-block .home-service strong { font-size: 1.05rem; }
+  .service-card-body { padding: 0.8rem 0.9rem 0.9rem; }
+  .services-block .service-more { min-height: 36px; font-size: 0.85rem; }
+
+  .work-card img { height: 170px; }
+  .journal-media img { height: 170px; }
+  .journal-body { padding: 1.3rem 1rem 0.9rem; }
+  .journal-body h3 { font-size: 1rem; }
+  .journal-all .btn { min-width: 0; }
+
+  .calc-panels fieldset { padding: 1rem; }
+  .consult-visual img { max-width: 240px; }
+  .consult-form { padding: 1rem 0.9rem; gap: 0.6rem; }
+  .consult-form-head > svg { width: 42px; height: 36px; }
+  .consult-form-head h3 { font-size: 1.05rem; }
+  .consult-form input, .consult-form select { min-height: 42px; font-size: 0.9rem; }
+
+  .btn, .btn.pill { font-size: 0.9rem; padding: 0.7rem 1.2rem; }
+
+  .float-dock { right: 8px; bottom: 64px; gap: 14px; }
+  .dock-btn, .dock-btn i { width: 40px; height: 40px; }
+  .dock-btn svg { width: 19px; height: 19px; }
+  .float-consult { right: 8px; bottom: 10px; font-size: 0.82rem; padding: 0.55rem 0.8rem; }
+
+  .footer-grid { padding: 2rem 16px 1.6rem; row-gap: 1.6rem; }
+  .footer-logo { font-size: 1.1rem; }
+  .footer-logo svg { width: 54px; height: 40px; }
+  .footer-bottom { padding-left: 16px; padding-right: 16px; font-size: 0.78rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal.is-in .reveal-kids > *, .reveal.reveal-kids.is-in > * {
     opacity: 1 !important;

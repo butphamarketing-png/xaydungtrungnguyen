@@ -11,15 +11,17 @@ const FILTERS = [
 ];
 
 const WORKS = [
-  { cat: "pho", title: "Nhà phố 3 tầng hiện đại", place: "TP. Thủ Đức, TP.HCM", src: "/villas/neo-02.jpg" },
-  { cat: "bietthu", title: "Biệt thự sân vườn", place: "Quận 9, TP.HCM", src: "/villas/villa-goc-lon.jpg" },
-  { cat: "caitao", title: "Cải tạo nhà ở", place: "Quận Bình Thạnh, TP.HCM", src: "/cai-tao.jpg" },
-  { cat: "dansu", title: "Thi công nhà trọn gói", place: "Huyện Hóc Môn, TP.HCM", src: "/hero/cong-trinh-01.jpg" },
-  { cat: "bietthu", title: "Biệt thự mặt tiền rộng", place: "TP.HCM", src: "/villas/villa-cong-lon.jpg" },
-  { cat: "bietthu", title: "Biệt thự mái mansard", place: "TP.HCM", src: "/villas/villa-mansard-rong.jpg" },
+  { cat: "dansu", title: "Xây tường bao công trình", place: "TP.HCM", src: "/cong-trinh/tn-09.jpg" },
+  { cat: "caitao", title: "Cải tạo – xây mới tường gạch", place: "TP.HCM", src: "/cong-trinh/tn-08.jpg" },
+  { cat: "caitao", title: "Tô trát hoàn thiện tường", place: "TP.HCM", src: "/cong-trinh/tn-01.jpg" },
+  { cat: "dansu", title: "Thi công phần thô", place: "TP.HCM", src: "/cong-trinh/tn-03.jpg" },
+  { cat: "caitao", title: "Sửa chữa nhà ở", place: "TP.HCM", src: "/cong-trinh/tn-04.jpg" },
+  { cat: "dansu", title: "Xây dựng nhà dân dụng", place: "TP.HCM", src: "/cong-trinh/tn-05.jpg" },
+  { cat: "caitao", title: "Cải tạo lối đi – hành lang", place: "TP.HCM", src: "/cong-trinh/tn-06.jpg" },
+  { cat: "pho", title: "Nhà phố 3 tầng hiện đại", place: "TP.HCM", src: "/villas/neo-02.jpg" },
   { cat: "pho", title: "Nhà phố góc", place: "TP.HCM", src: "/villas/neo-20.jpg" },
-  { cat: "caitao", title: "Cải tạo không gian ở", place: "TP.HCM", src: "/services/cai-tao.jpg" },
-  { cat: "dansu", title: "Hoàn thiện dân dụng", place: "TP.HCM", src: "/studio/01.jpg" },
+  { cat: "bietthu", title: "Biệt thự sân vườn", place: "TP.HCM", src: "/villas/villa-goc-lon.jpg" },
+  { cat: "bietthu", title: "Biệt thự mặt tiền rộng", place: "TP.HCM", src: "/villas/villa-cong-lon.jpg" },
 ];
 
 function perViewFor(width) {
