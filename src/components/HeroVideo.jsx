@@ -4,6 +4,7 @@ const UNLOCK_EVENTS = ["pointerdown", "keydown", "touchstart", "scroll", "wheel"
 
 export default function HeroVideo() {
   const videoRef = useRef(null);
+  const bgRef = useRef(null);
   const [muted, setMuted] = useState(false);
 
   useEffect(() => {
@@ -17,16 +18,41 @@ export default function HeroVideo() {
       UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
     };
 
-    video.muted = false;
-    video.play().catch(() => {
-      // Browsers block autoplay with sound until the visitor interacts with the page.
-      video.muted = true;
-      setMuted(true);
-      video.play().catch(() => {});
-      UNLOCK_EVENTS.forEach((evt) => window.addEventListener(evt, unlock, { passive: true }));
-    });
+    const start = () => {
+      video.currentTime = 0;
+      video.muted = false;
+      video.play().catch(() => {
+        // Browsers block autoplay with sound until the visitor interacts with the page.
+        video.muted = true;
+        setMuted(true);
+        video.play().catch(() => {});
+        UNLOCK_EVENTS.forEach((evt) => window.addEventListener(evt, unlock, { passive: true }));
+      });
+    };
 
-    return () => UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
+    const bg = bgRef.current;
+    const syncBg = () => {
+      if (!bg) return;
+      if (Math.abs(bg.currentTime - video.currentTime) > 0.3) bg.currentTime = video.currentTime;
+      if (video.paused) bg.pause();
+      else bg.play().catch(() => {});
+    };
+    video.addEventListener("play", syncBg);
+    video.addEventListener("pause", syncBg);
+    video.addEventListener("seeked", syncBg);
+    video.addEventListener("timeupdate", syncBg);
+
+    if (window.__loaderDone || !document.getElementById("page-loader")) start();
+    else window.addEventListener("page-loader-done", start, { once: true });
+
+    return () => {
+      video.removeEventListener("play", syncBg);
+      video.removeEventListener("pause", syncBg);
+      video.removeEventListener("seeked", syncBg);
+      video.removeEventListener("timeupdate", syncBg);
+      window.removeEventListener("page-loader-done", start);
+      UNLOCK_EVENTS.forEach((evt) => window.removeEventListener(evt, unlock));
+    };
   }, []);
 
   const toggleSound = () => {
@@ -41,11 +67,21 @@ export default function HeroVideo() {
     <section className="hero hero--video" aria-label="Video giới thiệu Xây Dựng Trung Nguyễn">
       <h1 className="sr-only">Xây nhà trọn gói, sửa chữa và cải tạo</h1>
       <video
+        ref={bgRef}
+        className="hero-video-bg"
+        src="/hero/gioi-thieu.mp4"
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+      <video
         ref={videoRef}
         className="hero-video"
         src="/hero/gioi-thieu.mp4"
-        poster="/hero/cong-trinh-01.jpg"
-        autoPlay
+        poster="/cong-trinh/tn-10.jpg"
         loop
         playsInline
         preload="auto"

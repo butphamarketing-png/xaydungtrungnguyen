@@ -1,6 +1,5 @@
 import { NavLink, Outlet, Link, useLocation } from "react-router-dom";
 import FloatDock from "./FloatDock.jsx";
-import BookingPopup from "./BookingPopup.jsx";
 import { findPost, kindOf, useCms } from "../lib/cms.js";
 import { applySeo, pageSeoFromCms } from "../lib/seo.js";
 import { useScrollReveal } from "../lib/useScrollReveal.js";
@@ -74,9 +73,16 @@ export default function Layout() {
       </a>
       <div className={`site-head${scrolled ? " is-scrolled" : ""}${home ? " on-home" : ""}${home && !scrolled ? " on-hero" : ""}`}>
         <div className="topbar">
-          <span>{site.name}</span>
-          <span className="topbar-address">{site.address}</span>
-          <span>Thứ 2 – Thứ 7: 08:00 – 16:30</span>
+          <div className="topbar-track" aria-label={`${site.name} – ${site.address}`}>
+            {[0, 1, 2, 3].map((i) => (
+              <span className="topbar-item" key={i} aria-hidden={i > 0 ? true : undefined}>
+                {site.name}
+                <i>•</i>
+                {site.address}
+                <i>•</i>
+              </span>
+            ))}
+          </div>
         </div>
         <header className="header">
           <Link to="/" className="brand" onClick={() => setOpen(false)}>
@@ -129,7 +135,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer className="footer">
-        <img className="footer-house" src="/home/y-tuong-hoan-thien.jpg" alt="" loading="lazy" />
+        <img className="footer-house" src="/cong-trinh/tn-03.jpg" alt="" loading="lazy" />
         <div className="footer-grid">
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
@@ -215,7 +221,6 @@ export default function Layout() {
         </div>
       </footer>
       <FloatDock />
-      <BookingPopup />
     </>
   );
 }

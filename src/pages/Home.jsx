@@ -67,7 +67,7 @@ export default function Home() {
             {
               title: "Thiết kế kiến trúc",
               desc: "Tư vấn, thiết kế kiến trúc và công năng phù hợp với nhu cầu và ngân sách.",
-              image: "/thiet-ke.jpg",
+              image: "/cong-trinh/tn-08.jpg",
               href: "/dich-vu",
             },
             {

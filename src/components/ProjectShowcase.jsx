@@ -4,8 +4,6 @@ import SmartImg from "./SmartImg.jsx";
 
 const FILTERS = [
   { id: "all", label: "Tất cả" },
-  { id: "pho", label: "Nhà phố" },
-  { id: "bietthu", label: "Biệt thự" },
   { id: "caitao", label: "Cải tạo – sửa chữa" },
   { id: "dansu", label: "Công trình dân dụng" },
 ];
@@ -18,10 +16,9 @@ const WORKS = [
   { cat: "caitao", title: "Sửa chữa nhà ở", place: "TP.HCM", src: "/cong-trinh/tn-04.jpg" },
   { cat: "dansu", title: "Xây dựng nhà dân dụng", place: "TP.HCM", src: "/cong-trinh/tn-05.jpg" },
   { cat: "caitao", title: "Cải tạo lối đi – hành lang", place: "TP.HCM", src: "/cong-trinh/tn-06.jpg" },
-  { cat: "pho", title: "Nhà phố 3 tầng hiện đại", place: "TP.HCM", src: "/villas/neo-02.jpg" },
-  { cat: "pho", title: "Nhà phố góc", place: "TP.HCM", src: "/villas/neo-20.jpg" },
-  { cat: "bietthu", title: "Biệt thự sân vườn", place: "TP.HCM", src: "/villas/villa-goc-lon.jpg" },
-  { cat: "bietthu", title: "Biệt thự mặt tiền rộng", place: "TP.HCM", src: "/villas/villa-cong-lon.jpg" },
+  { cat: "caitao", title: "Tô trát tường hoàn thiện", place: "TP.HCM", src: "/cong-trinh/tn-02.jpg" },
+  { cat: "dansu", title: "Xây tường gạch công trình", place: "TP.HCM", src: "/cong-trinh/tn-07.jpg" },
+  { cat: "dansu", title: "Đội ngũ thi công Trung Nguyễn", place: "TP.HCM", src: "/cong-trinh/tn-10.jpg" },
 ];
 
 function perViewFor(width) {
