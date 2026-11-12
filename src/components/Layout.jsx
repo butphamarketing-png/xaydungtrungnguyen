@@ -204,22 +204,12 @@ export default function Layout() {
           </div>
           <div className="footer-col">
             <p className="footer-title">Menu</p>
-            <div className="footer-menu-row">
-              <div className="footer-links">
-                {links.map((l) => (
-                  <Link key={l.to} to={l.to}>
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-              <iframe
-                className="footer-map"
-                title="Bản đồ Xây Dựng Trung Nguyễn"
-                src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+            <div className="footer-links">
+              {links.map((l) => (
+                <Link key={l.to} to={l.to}>
+                  {l.label}
+                </Link>
+              ))}
             </div>
           </div>
           <div className="footer-col">
@@ -243,6 +233,14 @@ export default function Layout() {
             </a>
           </p>
         </div>
+        <iframe
+          className="footer-map"
+          title="Bản đồ Xây Dựng Trung Nguyễn"
+          src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
       </footer>
       <FloatDock />
     </>

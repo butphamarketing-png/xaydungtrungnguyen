@@ -1781,15 +1781,10 @@ body.is-popup-open .float-consult {
   object-position: center;
 }
 .price-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  min-height: 5.5rem;
+  min-height: 4.6rem;
   box-sizing: border-box;
-  padding: 0.72rem 1rem 0.68rem;
-  background: #1a4f9c;
-  color: #fff;
+  padding: 0.85rem 1rem 0;
+  color: #1a4f9c;
 }
 .price-caption strong {
   display: block;
@@ -1802,10 +1797,10 @@ body.is-popup-open .float-consult {
   margin-top: 0.12rem;
   font-size: 0.84rem;
   line-height: 1.4;
-  opacity: 0.95;
+  color: #4f6a91;
 }
 .price-num {
-  margin: 0.95rem 1rem 0.35rem;
+  margin: 0.6rem 1rem 0.35rem;
   padding: 0.62rem 0.5rem;
   border-radius: 10px;
   background: #eef4fb;
@@ -2507,8 +2502,8 @@ body.is-popup-open .float-consult {
 .footer-house {
   position: absolute;
   right: 0;
-  bottom: 52px;
-  height: calc(100% - 52px);
+  bottom: calc(52px + 280px);
+  height: calc(100% - 52px - 280px);
   width: auto;
   object-fit: cover;
   pointer-events: none;
@@ -2519,7 +2514,7 @@ body.is-popup-open .float-consult {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1.5fr 0.9fr;
+  grid-template-columns: 1fr 1.2fr 0.9fr 0.9fr;
   gap: 0;
   padding: 3rem 4vw 2.6rem 6vw;
   margin-right: 220px;
@@ -2592,19 +2587,13 @@ body.is-popup-open .float-consult {
 }
 .footer-ico svg { width: 18px; height: 18px; }
 .footer .footer-links { gap: 0.45rem; }
-.footer-menu-row {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1.2rem;
-  align-items: stretch;
-}
 .footer-map {
+  position: relative;
+  z-index: 1;
+  display: block;
   width: 100%;
-  min-height: 210px;
-  height: 100%;
+  height: 280px;
   border: 0;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(12, 35, 72, 0.12);
   background: #e8eef7;
 }
 .footer .footer-links a {
@@ -2694,7 +2683,9 @@ body.is-popup-open .float-consult {
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-grid > div { padding: 0; border-left: 0 !important; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 5rem; }
+  .footer { padding-bottom: 5rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-map { height: 220px; }
   .footer-bottom p + p { padding-left: 0; border-left: 0; }
 }
 

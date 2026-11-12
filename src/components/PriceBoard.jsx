@@ -20,10 +20,10 @@ export default function PriceBoard() {
             {p.badge ? <span className="price-badge">{p.badge}</span> : null}
             <div className="price-photo">
               <SmartImg src={p.image} alt={p.featured ? p.title : p.tag} />
-              <div className="price-caption">
-                <strong>{p.featured ? p.title : p.tag}</strong>
-                <span>{p.featured ? p.lead : p.title}</span>
-              </div>
+            </div>
+            <div className="price-caption">
+              <strong>{p.featured ? p.title : p.tag}</strong>
+              <span>{p.featured ? p.lead : p.title}</span>
             </div>
             <p className="price-num">{p.price}</p>
             <ul>
