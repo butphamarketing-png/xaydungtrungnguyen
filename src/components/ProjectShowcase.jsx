@@ -22,7 +22,7 @@ const WORKS = [
 ];
 
 function perViewFor(width) {
-  if (width <= 720) return 1;
+  if (width <= 720) return 2;
   if (width <= 1100) return 2;
   return 4;
 }

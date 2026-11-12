@@ -3,6 +3,8 @@ import { useCms } from "./cms.js";
 
 /** Từng khối ảnh/chữ, không fade cả section lớn — hiện đúng chỗ đang lướt tới. */
 const ITEMS = [
+  "main > section:not(.hero)",
+  "main > div > section:not(.hero)",
   "main .services-intro",
   "main .service-card",
   "main .section-head",

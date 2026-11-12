@@ -123,6 +123,20 @@ export default function Layout() {
               ),
             )}
           </nav>
+          <a
+            className="header-map"
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address || "27/5 An Bình, Dĩ An")}`}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Xem bản đồ"
+            title="Xem bản đồ"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" strokeWidth="1.9" d="M12 21s6.5-5.6 6.5-11a6.5 6.5 0 1 0-13 0c0 5.4 6.5 11 6.5 11Z" />
+              <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" strokeWidth="1.9" />
+            </svg>
+            <span>Bản đồ</span>
+          </a>
           <a className="header-cta" href={`tel:${tel}`}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path

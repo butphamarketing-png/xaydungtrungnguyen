@@ -98,9 +98,9 @@ export default function Home() {
       </section>
 
       <PriceBoard />
-      <BuildCalc />
-
       <ProjectShowcase />
+
+      <BuildCalc />
 
       <ConsultBlock />
 
