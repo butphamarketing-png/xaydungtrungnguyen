@@ -31,11 +31,9 @@ export default function PriceBoard() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            {p.featured ? (
-              <Link className="btn pill with-arrow price-cta" to="/lien-he">
-                Đăng ký tư vấn ngay
-              </Link>
-            ) : null}
+            <Link className="btn pill with-arrow price-cta" to="/lien-he">
+              Đăng ký tư vấn ngay
+            </Link>
           </article>
         ))}
       </div>
