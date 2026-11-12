@@ -159,13 +159,7 @@ export default function Layout() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
-              <svg viewBox="0 0 64 48" aria-hidden="true">
-                <path d="M4 26 32 5l28 21" fill="none" stroke="#0c2348" strokeWidth="5" strokeLinejoin="round" />
-                <path d="M14 20v10" stroke="#0c2348" strokeWidth="5" />
-                <path d="M26 22h12v10H26z" fill="#0c2348" />
-                <path d="M30.5 22v10M26 27h12" stroke="#fff" strokeWidth="1.4" />
-                <path d="M2 44c18-10 40-10 60-4" fill="none" stroke="#2f6fd0" strokeWidth="4" strokeLinecap="round" />
-              </svg>
+              <img src="/logo-menu.png" alt="" />
               <span>
                 Xây Dựng
                 <br />

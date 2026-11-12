@@ -2520,7 +2520,7 @@ body.is-popup-open .float-consult {
   font-weight: 700;
   line-height: 1.15;
 }
-.footer-logo svg { width: 70px; height: 52px; flex: 0 0 auto; }
+.footer-logo img { width: 68px; height: 68px; flex: 0 0 auto; object-fit: contain; border-radius: 50%; }
 .footer-rule {
   display: block;
   width: 44px;
@@ -2771,7 +2771,7 @@ body.is-popup-open .float-consult {
 
   .footer-grid { padding: 2rem 16px 1.6rem; row-gap: 1.6rem; }
   .footer-logo { font-size: 1.1rem; }
-  .footer-logo svg { width: 54px; height: 40px; }
+  .footer-logo img { width: 56px; height: 56px; }
   .footer-bottom { padding-left: 16px; padding-right: 16px; font-size: 0.78rem; }
 }
 
