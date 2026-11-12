@@ -17,6 +17,8 @@ const links = [
   { to: "/lien-he", label: "Liên hệ" },
 ];
 
+const MAP_QUERY = "27/5 An Bình, Dĩ An, Bình Dương, Việt Nam";
+
 export default function Layout() {
   const cms = useCms();
   const { site, home: cmsHome, coreServices } = cms;
@@ -125,7 +127,7 @@ export default function Layout() {
           </nav>
           <a
             className="header-map"
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address || "27/5 An Bình, Dĩ An")}`}
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`}
             target="_blank"
             rel="noreferrer"
             aria-label="Xem bản đồ"
@@ -208,12 +210,22 @@ export default function Layout() {
           </div>
           <div className="footer-col">
             <p className="footer-title">Menu</p>
-            <div className="footer-links">
-              {links.map((l) => (
-                <Link key={l.to} to={l.to}>
-                  {l.label}
-                </Link>
-              ))}
+            <div className="footer-menu-row">
+              <div className="footer-links">
+                {links.map((l) => (
+                  <Link key={l.to} to={l.to}>
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+              <iframe
+                className="footer-map"
+                title="Bản đồ Xây Dựng Trung Nguyễn"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </div>
           <div className="footer-col">
