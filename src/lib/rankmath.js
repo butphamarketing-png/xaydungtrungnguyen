@@ -74,7 +74,7 @@ function hasToc(html) {
 }
 
 function internalLinks(html) {
-  return (String(html || "").match(/href=["'](\/|https?:\/\/(www\.)?vietdungphat\.com)/gi) || []).length;
+  return (String(html || "").match(/href=["'](\/|https?:\/\/(www\.)?(xaydungtrungnguyen|vietdungphat)\.com)/gi) || []).length;
 }
 
 function externalFollow(html) {
@@ -82,7 +82,7 @@ function externalFollow(html) {
   let m;
   while ((m = re.exec(html || ""))) {
     const href = m[1];
-    if (/vietdungphat\.com/i.test(href)) continue;
+    if (/(xaydungtrungnguyen|vietdungphat)\.com/i.test(href)) continue;
     if (/rel=["'][^"']*nofollow/i.test(m[0])) continue;
     return true;
   }

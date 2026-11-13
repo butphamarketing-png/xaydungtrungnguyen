@@ -29,6 +29,7 @@ export const PAGE_SEO = {
   "/du-an": {
     title: "Dự án và mẫu nhà | Xây Dựng Trung Nguyễn",
     description: "Danh sách dự án thiết kế, xây dựng nhà ở của Xây Dựng Trung Nguyễn — biệt thự, nhà phố, cải tạo.",
+    canonical: "/mau-nha",
   },
   "/san-pham": {
     title: "Nội thất và combo từ xưởng | Xây Dựng Trung Nguyễn",
@@ -217,10 +218,11 @@ export function pageSeoFromCms(pathname, cms) {
       title: staticPage.title,
       description: staticPage.description,
       keywords: staticPage.keywords,
-      path,
+      path: staticPage.canonical || path,
       image: path === "/" ? cms.home?.poster || DEFAULT_OG : DEFAULT_OG,
       type: "website",
       reviews: path === "/" ? cms.reviews : undefined,
+      pricePacks: path === "/bao-gia" ? cms.pricePacks : undefined,
       breadcrumbs:
         path === "/"
           ? []
@@ -393,7 +395,45 @@ export function seoArticleHtml({ title, keyword }) {
 <p><img src="/services/xay-dung.jpg" alt="Thi công ${kw} tại TP.HCM" /></p>`;
 }
 
-export function applySeo({ title, description, path, image, type = "website", noindex = false, breadcrumbs, article, site, faq, reviews, keywords }) {
+function parsePrice(text) {
+  const digits = String(text || "").split("/")[0].replace(/\D/g, "");
+  return digits ? Number(digits) : undefined;
+}
+
+export function priceOffersJson(packs = []) {
+  const services = packs
+    .map((pack) => ({ pack, price: parsePrice(pack.price) }))
+    .filter(({ price }) => price)
+    .map(({ pack, price }) => ({
+      "@type": "Service",
+      name: pack.title,
+      description: pack.lead,
+      serviceType: pack.tag,
+      areaServed: ["TP. Hồ Chí Minh", "Bình Dương", "Đồng Nai"],
+      provider: { "@type": "HomeAndConstructionBusiness", name: "Xây Dựng Trung Nguyễn", url: SITE_URL },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "VND",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price,
+          priceCurrency: "VND",
+          unitText: "m²",
+          ...(/^\s*từ/i.test(pack.price) ? { minPrice: price } : {}),
+        },
+        url: `${SITE_URL}/bao-gia`,
+      },
+    }));
+  if (!services.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Bảng báo giá xây dựng Trung Nguyễn",
+    itemListElement: services.map((item, i) => ({ "@type": "ListItem", position: i + 1, item })),
+  };
+}
+
+export function applySeo({ title, description, path, image, type = "website", noindex = false, breadcrumbs, article, site, faq, reviews, keywords, pricePacks }) {
   const url = pageUrl(path);
   const img = absolutize(image);
   document.title = title;
@@ -480,4 +520,8 @@ export function applySeo({ title, description, path, image, type = "website", no
   } else {
     document.getElementById("ld-faq")?.remove();
   }
+
+  const offers = pricePacks?.length ? priceOffersJson(pricePacks) : null;
+  if (offers) upsertJsonLd("ld-offers", offers);
+  else document.getElementById("ld-offers")?.remove();
 }

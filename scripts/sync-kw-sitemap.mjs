@@ -2,13 +2,13 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { KEYWORDS, keywordNewsPath } from "../src/data/keywords.js";
 import keywordNews from "../src/data/keyword-news.json" with { type: "json" };
 
-const host = "https://www.vietdungphat.com";
+const host = "https://xaydungtrungnguyen.com";
 const newsSlugs = new Set(keywordNews.map((p) => p.slug));
 const xml = readFileSync(new URL("../public/sitemap.xml", import.meta.url), "utf8");
 const kept = xml.split(/\r?\n/).filter((l) => {
   if (!l.includes("<loc>")) return false;
   if (l.includes("/tu-khoa")) return false;
-  const m = l.match(/vietdungphat\.com\/([^<]+)/);
+  const m = l.match(/xaydungtrungnguyen\.com\/([^<]+)/);
   if (m && newsSlugs.has(m[1])) return false;
   return true;
 });

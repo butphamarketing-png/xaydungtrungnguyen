@@ -3,6 +3,5 @@ Allow: /
 Disallow: /adminbp
 Disallow: /adminbp/
 Disallow: /api/
-Disallow: /tu-khoa/
 
-Sitemap: https://www.vietdungphat.com/sitemap.xml
+Sitemap: https://xaydungtrungnguyen.com/sitemap.xml

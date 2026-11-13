@@ -3,7 +3,7 @@ import data from "../src/data/content.json" with { type: "json" };
 import keywordNews from "../src/data/keyword-news.json" with { type: "json" };
 import { KEYWORDS, keywordNewsPath } from "../src/data/keywords.js";
 
-const host = "https://www.vietdungphat.com";
+const host = "https://xaydungtrungnguyen.com";
 const urls = ["/", "/gioi-thieu", "/dich-vu", "/mau-nha", "/san-pham", "/bao-gia", "/thuoc-lo-ban", "/tin-tuc", "/lien-he", "/tu-khoa"];
 for (const k of KEYWORDS) urls.push(keywordNewsPath(k));
 for (const p of [...data.projects, ...data.products, ...data.services, ...data.news, ...keywordNews]) {

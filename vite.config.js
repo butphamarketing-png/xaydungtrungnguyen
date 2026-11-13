@@ -73,6 +73,7 @@ function spaFallbackHtml() {
         title: meta.title,
         description: meta.description,
         keywords: meta.keywords,
+        canonical: meta.canonical,
         image: loc === "/" ? DEFAULT_OG : DEFAULT_OG,
         type: "website",
       }));
@@ -124,7 +125,7 @@ function spaFallbackHtml() {
       }
 
       for (const item of unique) {
-        const html = injectSeoIntoHtml(original, { ...item, path: item.loc });
+        const html = injectSeoIntoHtml(original, { ...item, path: item.canonical || item.loc });
         if (item.loc === "/") {
           writeFileSync(index, html);
           continue;
@@ -149,7 +150,7 @@ function spaFallbackHtml() {
       const sitemap = [
         `<?xml version="1.0" encoding="UTF-8"?>`,
         `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-        ...unique.map((item) => {
+        ...unique.filter((item) => !item.canonical).map((item) => {
           const loc = pageUrl(item.loc);
           const priority = item.loc === "/" ? "1.0" : item.type === "article" ? "0.6" : "0.8";
           const freq = item.loc === "/" ? "daily" : item.type === "article" ? "weekly" : "weekly";
